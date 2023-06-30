@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        header {
+            z-index: 100;
+        }
+
+        .marker.korea {
+            left: 39.813%;
+            /* (604 / 2114.440) * 100 */
+            top: 42.042%;
+            /* (316 / 1037.400) * 100 */
+        }
+
+        .marker.china {
+            left: 33.141%;
+            /* (701 / 2114.440) * 100 */
+            top: 44.336%;
+            /* (459 / 1037.400) * 100 */
+        }
+
+        .marker.hungary {
+            left: 9.463%;
+            /* (200 / 2114.440) * 100 */
+            top: 33.549%;
+            /* (348 / 1037.400) * 100 */
+        }
+
+        .marker.schweiz {
+            left: 7.565%;
+            /* (160 / 2114.440) * 100 */
+            top: 35.651%;
+            /* (370 / 1037.400) * 100 */
+        }
+
+        .marker.japan {
+            left: 42.818%;
+            /* (904 / 2114.440) * 100 */
+            top: 42.145%;
+            /* (448 / 1037.400) * 100 */
+        }
+
+        .marker.philippines {
+            left: 38.520%;
+            /* (814 / 2114.440) * 100 */
+            top: 57.407%;
+            /* (597 / 1037.400) * 100 */
+        }
+        .small-preview {
+            display: block;
+            max-width: 200px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        #board-img {
+            display: flex;
+            /* align-items: center; */
+            width: 300px;
+            text-align: center;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .modal-white {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .modal-white h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-white input[type="text"],
+        .modal-white textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-white textarea {
+            height: 100px;
+        }
+        
+        .modal-white button[type="submit"] {
+            background-color: #3897f0;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .modal-white button[type="submit"]:hover {
+            background-color: #3366cc;
+        }
+        
+        .modal-white #message {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+    </style>
+</head>
+
+<body>
+    <section class="modal-bg hidden" style="z-index: 9999;">
+        <div class="modal-white">
+            <h2>게시판 글쓰기</h2>
+            <form id="postForm">
+                <textarea id="content" placeholder="내용" required></textarea>
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+                <div id="imagePreviewContainer"></div>
+                <!-- <button type="submit" id="goToKor"     >글쓰기</button> -->
+            </form>
+            <div id="message"></div>
+            <select>
+                <option>한국</option>
+                <option>중국</option>
+                <option>일본</option>
+                <option>필리핀</option>
+              </select>
+            <a href="./korea.html"><button id="goToKor">글쓰기</button></a>
+        </div>
+    </section>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="logo">
+            <a href="./index.html"><img src="./image/page_logo.png" alt="logo"></a>
+        </div>
+        <div class="user-info">
+            <img src="./data/user_img/오둥이1.jpg">
+            <span style="color : white;">USER_ID</span>
+        </div>
+        <div class="login" style="display: none;">login</div>
+
+    </header>
+    <!-- 메뉴 -->
+    <nav>
+        <div class="menu-btn">
+            <div class="line line--1"></div>
+            <div class="line line--2"></div>
+            <div class="line line--3"></div>
+        </div>
+
+        <div class="nav-links">
+            <a class="link" id="login_on" href="./login.html" style="display:none">로그인</a>
+            <div class="link" id="logout">로그아웃</div>
+            <div class="link" id="popup">글쓰기</div>
+            <a href="" class="link">Profile</a>
+            <a href="" class="link">About</a>
+        </div>
+    </nav>
+
+    <main>
+        <div id="map">
+            <img id="image" src="./image/img_worldmap_01.png" alt="Map Image" class="map-image" width="100%"
+                height="100%">
+            <div class="marker korea"></div>
+            <div class="marker china"></div>
+            <div class="marker hungary"></div>
+            <div class="marker schweiz"></div>
+            <div class="marker japan"></div>
+            <div class="marker philippines"></div>
+
+        </div>
+        <!-- 팝업 세션 -->
+
+    </main>
+
+
+    <footer>
+        <div>
+            <div id="footer">
+                <div>Copyright ⓒ 2023 All Reserved</div>
+                <div>contact | </div>
+            </div>
+            </ul>
+        </div>
+    </footer>
+    <div class="tooltip" id="korea1" style="left:50%; top:50%;">KOREA</div>
+    <div class="tooltip" id="china1" style="left:50%; top:50%;">CHINA</div>
+    <div class="tooltip" id="hungary1" style="left:50%; top:50%;">HUNGARY</div>
+    <div class="tooltip" id="schweiz1" style="left:50%; top:50%;">SCHWEIZ</div>
+    <div class="tooltip" id="japan1" style="left:50%; top:50%;">JAPAN</div>
+    <div class="tooltip" id="philippines1" style="left:50%; top:50%;">PHILIPPINES</div>
+    <script src="./js/main.js"></script>
+
+    <script>
+        const contentInput = document.getElementById('content');
+        const imageUploadInput = document.getElementById('imageUpload');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const postForm = document.getElementById('postForm');
+        const messageDiv = document.getElementById('message');
+
+        imageUploadInput.addEventListener('change', previewImages);
+        postForm.addEventListener('submit', submitPost);
+        document.getElementById('resetButton').addEventListener('click', resetForm);
+
+        function previewImages(event) {
+            const files = Array.from(event.target.files);
+
+            imagePreviewContainer.innerHTML = '';
+
+            files.forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const previewElement = document.createElement('img');
+                    previewElement.src = e.target.result;
+                    previewElement.classList.add('small-preview');
+                    imagePreviewContainer.appendChild(previewElement);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function resetForm() {
+            contentInput.value = '';
+            imageUploadInput.value = null;
+            imagePreviewContainer.innerHTML = '';
+        }
+
+        function submitPost(event) {
+            event.preventDefault(); // 폼 제출 기본 동작 중단
+
+            // 입력된 제목과 내용 가져오기
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            // 서버로 전송할 데이터 구성
+            const data = {
+                content: content
+            };
+
+            // 데이터를 로컬 스토리지에 저장
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(data);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            // 글이 성공적으로 저장되었을 때의 동작
+            document.getElementById('message').textContent = '글이 성공적으로 저장되었습니다.';
+
+            resetForm();
+
+            const goToKor = document.getElementById('goToKor');
+            goToKor.addEventListener('click', function () {
+                var url = "./korea.html";
+                window.location.href = url;
+            });
+        }
+    </script>
+</body>
+
+</html>

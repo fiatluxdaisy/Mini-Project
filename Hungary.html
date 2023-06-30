@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .marker {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            left: 770px;
+            top: 430px;
+        }
+
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+    </style>
+</head>
+
+<body>
+    <section class="modal-bg hidden">
+        <div class="modal-white">
+            <div class="user-info">
+                <img src="./data/user_img/오둥이1.jpg">
+                <span>user_id</span>
+            </div>
+            <div class="card-img">
+                <img src="./data/user_img/부다페스트.jpg" id="map" alt="" style="height: 400px; width:300px;">
+            </div>
+            <div class="write">
+                <div class="content">
+                    헝가리 부다페스트
+                </div>
+            </div>
+            <div id="heart_area">
+                <span id="white_heart">🤍</span>
+                <span id="red_heart">❤️</span>
+            </div>
+            <div class="comment-write-area">
+                <input type="text" id="comment-write">
+                <button class="comment-write-btn">게시</button>
+            </div>
+            <div class="comment">
+
+            </div>
+        </div>
+        </div>
+    </section>
+    <header>
+        <div class="logo">
+            <a href="./index.html"><img src="./image/page_logo.png" alt="logo"></a>
+        </div>
+        <div class="user-info">
+            <img src="./data/user_img/오둥이1.jpg">
+            <span style="color : white;">user_id</span>
+        </div>
+        <div class="login" style="display: none;"></div>
+    </header>
+    <!-- 메뉴 -->
+    <nav>
+        <div class="menu-btn">
+            <div class="line line--1"></div>
+            <div class="line line--2"></div>
+            <div class="line line--3"></div>
+        </div>
+
+        <div class="nav-links">
+            <a href="" class="link"><input type="text"></a>
+            <a href="" class="link">글쓰기</a>
+            <a href="" class="link">Profile</a>
+            <a href="" class="link">About</a>
+        </div>
+    </nav>
+    <main>
+    <div>
+        <span id="title">Hungary</span>
+        <img src="./image/img_Hungary_01.png">
+        <div class="marker" id="popup">
+            <img src="./image/marker.png" style="height: 100%; width: 100%;">
+        </div>
+    </div>
+    <script src="./js/zoomed_page.js"></script>
+</body>
+
+</html>

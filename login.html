@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+    <div class="login">
+        <div>
+            <div>
+                <div class="h1Box">
+                    <h2>LOGIN</h2> &nbsp;
+                </div>
+                <form action="./index.html" id="login-form">
+                    <input type="text" name="userName" placeholder="ID">
+                    <input type="password" name="userPassword" placeholder="Password">
+                    <label for="remember-check">
+                        <input type="checkbox" id="remember-check">아이디 저장하기
+                    </label>
+                    <input class="submit" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const submit = document.querySelector('.submit');
+    
+    submit.addEventListener('click',()=>{
+        alert('로그인 되었습니다.');
+    })
+</script>
+</html>
